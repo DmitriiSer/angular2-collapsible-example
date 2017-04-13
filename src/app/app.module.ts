@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+//import { CollapsibleListModule } from 'angular2-collapsible';
+import { CollapsibleListModule } from './components/angular2-collapsible/index';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +15,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CollapsibleListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

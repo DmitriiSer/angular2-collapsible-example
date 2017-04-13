@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'This is an example application that shows how to use angular2-collapsible component';
+
+  items = ['item1', 'item2'];
 }

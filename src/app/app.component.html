@@ -1,3 +1,26 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>{{title}}</h4>
+
+      <collapsible-list>
+        <collapsible-list-item [expanded]="false">
+          <collapsible-list-header class="waves-effect">Item 1</collapsible-list-header>
+          <collapsible-list-body>
+            <p>
+              Lorem ipsum
+            </p>
+          </collapsible-list-body>
+        </collapsible-list-item>
+        <collapsible-list-item [expanded]="true">
+          <collapsible-list-header class="waves-effect">Item 2</collapsible-list-header>
+          <collapsible-list-body></collapsible-list-body>
+        </collapsible-list-item>
+        <collapsible-list-item>
+          <collapsible-list-header class="waves-effect">Item 3</collapsible-list-header>
+          <collapsible-list-body></collapsible-list-body>
+        </collapsible-list-item>
+      </collapsible-list>
+    </div>
+  </div>
+</div>

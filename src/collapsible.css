@@ -1,0 +1,95 @@
+/* 
+ * COLLAPSIBLE ITEM
+ */
+
+.collapsible-header i {
+  width: 2rem;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  display: block;
+  float: left;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.side-nav collapsible-list li,
+.side-nav.fixed collapsible-list li {
+  padding: 0;
+}
+
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
+  background-color: transparent;
+  border: none;
+  line-height: inherit;
+  height: inherit;
+  padding: 0 16px;
+}
+
+.side-nav .collapsible-header:hover,
+.side-nav.fixed .collapsible-header:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.side-nav .collapsible-header i,
+.side-nav.fixed .collapsible-header i {
+  line-height: inherit;
+}
+
+.side-nav .collapsible-body li a,
+.side-nav.fixed .collapsible-body li a {
+  padding: 0 23.5px 0 31px;
+}
+
+collapsible-list.popout > li.active {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  margin: 16px 0;
+}
+
+.side-nav .collapsible-body > ul:not(collapsible-list) > li.active,
+.side-nav.fixed .collapsible-body > ul:not(collapsible-list) > li.active {
+  background-color: #ee6e73;
+}
+
+.side-nav .collapsible-body > ul:not(collapsible-list) > li.active a,
+.side-nav.fixed .collapsible-body > ul:not(collapsible-list) > li.active a {
+  color: #fff;
+}
+
+/* 
+ * COLLAPSIBLE CHILDREN
+ */
+
+/*.collapsible-body {
+  display: none;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.side-nav .collapsible-body,
+.side-nav.fixed .collapsible-body {
+  border: 0;
+  background-color: #fff;
+}
+
+.side-nav .collapsible-body {
+  padding: 0;
+}*/
+
+/* 
+ * COLLAPSIBLE COLLECTION
+ */
+
+collapsible-list .collection {
+  margin: 0;
+  border: none;
+}
+
+/* 
+ * COLLAPSIBLE BADGE
+ */
+
+collapsible-list span.badge {
+  margin-top: calc(1.5rem - 11px);
+}

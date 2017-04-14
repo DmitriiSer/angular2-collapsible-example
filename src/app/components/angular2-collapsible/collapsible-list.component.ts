@@ -4,7 +4,7 @@ import {
   ContentChildren, QueryList
 } from '@angular/core';
 
-import { CollapsibleListItem } from './collapsible-list-item.directive';
+import { CollapsibleListItem } from './collapsible-list-item.component';
 
 @Component({
   selector: 'collapsible-list',
@@ -53,7 +53,7 @@ export class CollapsibleListComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.items.forEach((item) => {
-      console.debug(item);
+      //console.debug(item);
     });
 
   }

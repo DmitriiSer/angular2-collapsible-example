@@ -1,30 +1,34 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import {
+    Component,
+    AfterContentInit,
+    Input,
+    ContentChildren, QueryList    
+} from '@angular/core';
 
-import { CollapsibleListEventService } from './collapsible-list-event.service';
+import { CollapsibleBody } from './collapsible-body.component';
+
+import { CollapsibleService } from './collapsible.service';
+import { CollapsibleEventService } from './collapsible-event.service';
 
 @Component({
     selector: 'collapsible-list-item',
-    template: `<ng-content></ng-content>`,
-    providers: [CollapsibleListEventService]
+    template: `
+        <ng-content select="collapsible-header"></ng-content>
+        <ng-content select="collapsible-body"></ng-content>
+    `,
+    providers: [CollapsibleEventService]
 })
-export class CollapsibleListItem implements OnDestroy {
+export class CollapsibleListItem implements AfterContentInit {
 
-    @Input() expanded: boolean;
+    @ContentChildren(CollapsibleBody) contentListBodies: QueryList<CollapsibleBody>;
 
-    constructor(private eventService: CollapsibleListEventService) {
-        /*
-        eventService.collapsibleHeaderClicked$.subscribe(
-            event => {
-                this.expanded = !this.expanded;
-                console.debug('CollapsibleListItem::fired!');
-            });
-            */
-    }
+    constructor(private collapsibleService: CollapsibleService) { }
 
-    // Makes sure we don't have a memory leak by destroying the
-    // Subscription when our component is destroyed
-    ngOnDestroy() {
-        //this.eventService.unsubscribe();
+    ngAfterContentInit() {
+        // store list bodies in 'CollapsibleService'
+        this.contentListBodies.forEach((item) => {
+            this.collapsibleService.addListBody(item);
+        });
     }
 
 }

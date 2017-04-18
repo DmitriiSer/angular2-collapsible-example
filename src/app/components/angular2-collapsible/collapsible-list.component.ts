@@ -1,10 +1,13 @@
 import {
   Component,
-  AfterContentInit,
+  OnChanges, SimpleChanges,
+  Input,
   ContentChildren, QueryList
 } from '@angular/core';
 
 import { CollapsibleListItem } from './collapsible-list-item.component';
+
+import { CollapsibleService } from './collapsible.service';
 
 @Component({
   selector: 'collapsible-list',
@@ -42,19 +45,23 @@ import { CollapsibleListItem } from './collapsible-list-item.component';
     .side-nav :host {
       margin: 0;
     }
-  `]
+  `],
+  providers: [CollapsibleService]
 })
-export class CollapsibleListComponent implements AfterContentInit {
-  title = 'collapsible list component';
+export class CollapsibleListComponent implements OnChanges {
+  @Input() type: 'accordion' | 'expandable' = 'accordion';
 
-  @ContentChildren(CollapsibleListItem) items: QueryList<CollapsibleListItem>;
+  @ContentChildren(CollapsibleListItem) contentListItems: QueryList<CollapsibleListItem>;
 
-  constructor() { }
+  constructor(private collapsibleService: CollapsibleService) { }
 
-  ngAfterContentInit() {
-    this.items.forEach((item) => {
-      //console.debug(item);
-    });
-
+  ngOnChanges(changes: SimpleChanges): void {
+    for (let change in changes) {
+      if (change === 'type') {
+        //console.debug('CollapsibleListComponent::ngOnChanges(), currentValue = ' + changes.type.currentValue);
+        this.type = changes.type.currentValue;
+        this.collapsibleService.setType(this.type);
+      }
+    }
   }
 }

@@ -1,9 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 
-import { CollapsibleListEventService } from './collapsible-list-event.service';
+import { CollapsibleEventService } from './collapsible-event.service';
 
 @Component({
-    selector: 'collapsible-list-header',
+    selector: 'collapsible-header',
     template: `<ng-content></ng-content>`,
     styles: [`
         :host {
@@ -17,13 +17,14 @@ import { CollapsibleListEventService } from './collapsible-list-event.service';
         }
     `]
 })
-export class CollapsibleListHeader {
+export class CollapsibleHeader {
 
-    constructor(private eventService: CollapsibleListEventService) { }
+    constructor(private eventService: CollapsibleEventService) { }
 
-    @HostListener('click', ['$event'])
-    click(event) {
-        this.eventService.collapsibleHeaderClick(event);
+    @HostListener('click')
+    click() {
+        //console.debug('CollapsibleHeader::click()');
+        this.eventService.toggleCollapsibleItem();
     }
 
 }

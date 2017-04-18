@@ -1,26 +1,80 @@
 <div class="container">
+
   <div class="row">
     <div class="col">
       <h4>{{title}}</h4>
+    </div>
+  </div>
 
-      <collapsible-list>
-        <collapsible-list-item [expanded]="false">
-          <collapsible-list-header class="waves-effect">Item 1</collapsible-list-header>
-          <collapsible-list-body>
-            <p>
-              Lorem ipsum
-            </p>
-          </collapsible-list-body>
-        </collapsible-list-item>
-        <collapsible-list-item [expanded]="true">
-          <collapsible-list-header class="waves-effect">Item 2</collapsible-list-header>
-          <collapsible-list-body></collapsible-list-body>
-        </collapsible-list-item>
-        <collapsible-list-item>
-          <collapsible-list-header class="waves-effect">Item 3</collapsible-list-header>
-          <collapsible-list-body></collapsible-list-body>
+  <div class="row">
+    <div class="col s12" style="text-align: center">
+      <span>Collapsible type:</span>
+      <span>
+        <input name="group1" type="radio" id="test1" checked (change)="changeCollapsibleType()" />
+        <label for="test1">Accordion</label>
+      </span>
+      <span>
+        <input name="group1" type="radio" id="test2" (change)="changeCollapsibleType()" />
+        <label for="test2">Expandable</label>
+      </span>
+    </div>
+  </div>
+
+  <div class="row z-depth-1">
+    <ul class="tabs" style="border-bottom: 1px solid rgb(208, 208, 208)">
+      <li class="tab col s3"><a [ngClass]="{ 'active': activeTab1 }" href="#simple-collapsible">Simple Collapsible</a></li>
+      <li class="tab col s3"><a [ngClass]="{ 'active': activeTab2 }" href="#table-collapsible">Table collapsible</a></li>
+    </ul>
+
+    <div id="simple-collapsible" class="col s12">
+      <collapsible-list [type]="collapsibleType">
+        <collapsible-list-item *ngFor="let item of listItems">
+          <collapsible-header class="waves-effect">
+            {{ item.desc }}
+          </collapsible-header>
+          <collapsible-body [expanded]="item.expanded">
+            <p style="text-align: left">{{ loremIpsum }}</p>
+          </collapsible-body>
         </collapsible-list-item>
       </collapsible-list>
     </div>
+
+    <div id="table-collapsible" class="col s12" style="max-height: 40vh; overflow: auto">
+
+      <collapsible-table class="z-depth-2" [type]="collapsibleType" bordered striped highlight select _selectMultipleRows noTextSelect
+        centered>
+
+        <thead>
+          <collapsible-table-row>
+            <th *ngFor="let header of tableItems.header">
+              {{ header.desc }}
+            </th>
+          </collapsible-table-row>
+        </thead>
+
+        <tbody>
+          <ng-container *ngFor="let data of tableItems.data">
+            <!-- parameter 'to' links a row with it's detail -->
+            <collapsible-table-row [detail]="detail">
+              <td *ngFor="let td of data">
+                {{ td }}
+              </td>
+            </collapsible-table-row>
+
+            <collapsible-table-row-detail #detail>
+              <td width="75%">
+                <p>{{ loremIpsumSmall }}</p>
+              </td>
+              <td>
+                <p>{{ loremIpsumSmall }}</p>
+              </td>
+            </collapsible-table-row-detail>
+
+          </ng-container>
+        </tbody>
+
+      </collapsible-table>
+    </div>
+
   </div>
 </div>

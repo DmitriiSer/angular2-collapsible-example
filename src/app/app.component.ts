@@ -14,8 +14,7 @@ export class AppComponent {
   collapsibleType: string = 'accordion';
   collapsibleTypeAccordion: boolean = true;
 
-  activeTab1: boolean;
-  activeTab2: boolean = true;
+  activeTab: boolean = true;
 
   listItems = [{
     desc: 'item 1',

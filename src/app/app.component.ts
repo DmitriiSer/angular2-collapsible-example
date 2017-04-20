@@ -58,19 +58,19 @@ export class AppComponent {
     'noTextSelect'
   ];
 
-  private bordered = false;
-  private borderedHorizontally = false;
-  private borderedVertically = false;
-  private striped = false;
-  private stripedOddColor = '#f2f2f2';
-  private stripedEvenColor = 'transparent';
-  private highlight = false;
-  private highlightColor = '#e2e2e2';
-  private activeColor = '#d2d2d2';
-  private select = false;
-  private selectMultipleRows = false;
-  private centered = false;
-  private noTextSelect = false;
+  bordered = false;
+  borderedHorizontally = false;
+  borderedVertically = false;
+  striped = false;
+  stripedOddColor = '#f2f2f2';
+  stripedEvenColor = 'transparent';
+  highlight = false;
+  highlightColor = '#e2e2e2';
+  activeColor = '#d2d2d2';
+  select = false;
+  selectMultipleRows = false;
+  centered = false;
+  noTextSelect = false;
 
   constructor() { }
 
@@ -106,7 +106,7 @@ export class AppComponent {
       case 'stripedOddColor': return this.stripedOddColor;
       case 'stripedEvenColor': return this.stripedEvenColor;
       case 'highlightColor': return this.highlightColor;
-      case 'activeColor': return this.activeColor;      
+      case 'activeColor': return this.activeColor;
       default:
         return 'boolean';
     }

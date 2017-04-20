@@ -14,7 +14,7 @@ export class AppComponent {
   collapsibleType: string = 'accordion';
   collapsibleTypeAccordion: boolean = true;
 
-  activeTab: boolean = true;
+  activeTab = 1;
 
   listItems = [{
     desc: 'item 1',
@@ -46,6 +46,32 @@ export class AppComponent {
     ]
   };
 
+  tableOptions = [
+    'bordered', 'borderedHorizontally', 'borderedVertically',
+    'striped',
+    'stripedOddColor', 'stripedEvenColor',
+    'highlight',
+    'highlightColor',
+    'activeColor',
+    // 'select', 'selectMultipleRows',
+    'centered',
+    'noTextSelect'
+  ];
+
+  private bordered = false;
+  private borderedHorizontally = false;
+  private borderedVertically = false;
+  private striped = false;
+  private stripedOddColor = '#f2f2f2';
+  private stripedEvenColor = 'transparent';
+  private highlight = false;
+  private highlightColor = '#e2e2e2';
+  private activeColor = '#d2d2d2';
+  private select = false;
+  private selectMultipleRows = false;
+  private centered = false;
+  private noTextSelect = false;
+
   constructor() { }
 
   changeCollapsibleType(): void {
@@ -54,6 +80,45 @@ export class AppComponent {
       this.collapsibleType = 'accordion';
     } else {
       this.collapsibleType = 'expandable';
+    }
+  }
+
+  toggleOption(option: string, value: any): void {
+    switch (option) {
+      case 'bordered': this.bordered = value; break;
+      case 'borderedHorizontally': this.borderedHorizontally = value; break;
+      case 'borderedVertically': this.borderedVertically = value; break;
+      case 'striped': this.striped = value; break;
+      case 'stripedOddColor': this.stripedOddColor = value; break;
+      case 'stripedEvenColor': this.stripedEvenColor = value; break;
+      case 'highlight': this.highlight = value; break;
+      case 'highlightColor': this.highlightColor = value; break;
+      case 'activeColor': this.activeColor = value; break;
+      case 'select': this.select = value; break;
+      case 'selectMultipleRows': this.selectMultipleRows = value; break;
+      case 'centered': this.centered = value; break;
+      case 'noTextSelect': this.noTextSelect = value; break;
+    }
+  }
+
+  typeOf(str: string): string {
+    switch (str) {
+      case 'stripedOddColor': return this.stripedOddColor;
+      case 'stripedEvenColor': return this.stripedEvenColor;
+      case 'highlightColor': return this.highlightColor;
+      case 'activeColor': return this.activeColor;      
+      default:
+        return 'boolean';
+    }
+  }
+
+  inputDisabled(option: string): boolean {
+    switch (option) {
+      case 'stripedOddColor':
+      case 'stripedEvenColor':
+        return this.striped ? null : true;
+      case 'highlightColor':
+        return this.highlight ? null : true;
     }
   }
 }

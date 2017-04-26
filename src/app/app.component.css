@@ -2,7 +2,7 @@ body {
   overflow: hidden;
 }
 
-h4 {
+.page-title {
   text-align: center;
 }
 
@@ -83,7 +83,8 @@ h4 {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
+  height: 5px;
 }
 
 /* Track */

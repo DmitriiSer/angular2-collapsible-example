@@ -17,12 +17,12 @@
           <div class="col s12" style="text-align: center">
             <span>Collapsible type:</span>
             <span>
-              <input name="group1" type="radio" id="test1" checked (change)="changeCollapsibleType()" />
-              <label for="test1">Accordion</label>
+              <input name="collapsibleTypeGroup" type="radio" id="accordion" checked (change)="changeCollapsibleType()" />
+              <label for="accordion">Accordion</label>
             </span>
             <span>
-              <input name="group1" type="radio" id="test2" (change)="changeCollapsibleType()" />
-              <label for="test2">Expandable</label>
+              <input name="collapsibleTypeGroup" type="radio" id="expandable" (change)="changeCollapsibleType()" />
+              <label for="expandable">Expandable</label>
             </span>
           </div>
         </div>
@@ -52,10 +52,29 @@
 
           <div id="table-collapsible" class="col s12">
 
-            <collapsible-table class="z-depth-2" [type]="collapsibleType" [bordered]="bordered" [borderedHorizontally]="borderedHorizontally"
-              [borderedVertically]="borderedVertically" [striped]="striped" [stripedOddColor]="stripedOddColor" [stripedEvenColor]="stripedEvenColor"
-              [highlight]="highlight" [highlightColor]="highlightColor" [activeColor]="activeColor" [select]="select" [selectMultipleRows]="selectMultipleRows"
-              [centered]="centered" [noTextSelect]="noTextSelect">
+            <collapsible-table class="z-depth-2"
+              [type]="collapsibleType"
+              [bordered]="bordered"
+              [borderedHorizontally]="borderedHorizontally"
+              [borderedVertically]="borderedVertically"
+              [striped]="striped"
+              [stripedOddColor]="stripedOddColor"
+              [stripedOddTextColor]="stripedOddTextColor"
+              [stripedEvenColor]="stripedEvenColor"
+              [stripedEvenTextColor]="stripedEvenTextColor"
+              [highlight]="highlight"
+              [highlightColor]="highlightColor"
+              [highlightTextColor]="highlightTextColor"
+              [activeColor]="activeColor"
+              [activeTextColor]="activeTextColor"
+              [centered]="centered"
+              [select]="select"
+              [selectMultipleRows]="selectMultipleRows"
+              [selectColor]="selectColor"
+              [selectTextColor]="selectTextColor"
+              [allowDeselectingRows]="allowDeselectingRows"
+              [allowKeyboardNavigation]="allowKeyboardNavigation"
+              [noTextSelect]="noTextSelect">
 
               <thead>
                 <collapsible-table-row>
@@ -105,18 +124,37 @@
           <li class="warning">
             <div>This screen is too small to show options</div>
           </li>
-          <li *ngFor="let option of tableOptions" class="collection-item" [ngClass]="{ 'input': typeOf(option) !== 'boolean'}">
-            <div *ngIf="typeOf(option) === 'boolean'" class="checkbox">
-              <input #checkbox type="checkbox" id="checkbox_{{ option }}" [(ngModel)]="checkbox.checked" (change)="toggleOption(option, checkbox.checked)"
-              />
-              <!--
-              -->
-              <label for="checkbox_{{ option }}" class="tooltipped" [attr.data-tooltip]="option" data-position="left">{{ option }}</label>
+          <li *ngFor="let option of tableOptions"
+            class="collection-item"
+            [ngClass]="{ 'input': typeOf(option.title) !== 'boolean'}">
+            <!-- checkbox -->
+            <div *ngIf="typeOf(option.title) === 'boolean'" class="checkbox">
+              <input #checkbox
+                type="checkbox"
+                id="checkbox_{{ option.title }}"
+                [(ngModel)]="option.checked"
+                (change)="setOption(option.title, option.checked)"/>              
+              <label
+                for="checkbox_{{ option.title }}"
+                class="tooltipped"
+                [attr.data-tooltip]="option.title"
+                data-position="left">{{ option.title }}</label>
             </div>
-            <div *ngIf="typeOf(option) !== 'boolean'" class="input">
+            <!-- input field -->
+            <div *ngIf="typeOf(option.title) == 'string'" class="input">
               <div class="input-field">
-                <input #input id="input_{{ option }}" type="text" [attr.value]="typeOf(option)" [attr.disabled]="inputDisabled(option)" (keyup)="toggleOption(option, input.value)">
-                <label for="input_{{ option }}" class="tooltipped" [attr.data-tooltip]="option" data-position="left">{{ option }}</label>
+                <input
+                  #input
+                  type="text"
+                  id="input_{{ option.title }}"                
+                  [attr.value]="getOption(option.title)"
+                  [attr.disabled]="inputDisabled(option.title)"
+                  (keyup)="setOption(option.title, input.value)">
+                  <label
+                    for="input_{{ option.title }}"
+                    class="tooltipped"
+                    [attr.data-tooltip]="option.title"
+                    data-position="left">{{ option.title }}</label>
               </div>
             </div>
           </li>

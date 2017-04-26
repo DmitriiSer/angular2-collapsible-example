@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+//import 'materialize-css';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -105,6 +107,13 @@ export class AppComponent {
     } else {
       this.collapsibleType = 'expandable';
     }
+  }
+
+  tableTabClicked() {
+    this.activeTab = 1;
+    setTimeout(() => {
+      (<any>window).Materialize.updateTextFields();
+    }, 0);
   }
 
   typeOf(str: string): string {

@@ -1,6 +1,6 @@
 {
   "name": "angular2-collapsible-example",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "angular2-collapsible": "0.0.40",
+    "angular2-collapsible": "0.0.41",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "materialize-css": "^0.98.1",
@@ -33,7 +33,7 @@
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
+    "codelyzer": "~3.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",

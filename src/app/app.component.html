@@ -37,20 +37,30 @@
               (click)="tableTabClicked()">Table collapsible</a>
             </li>
           </ul>
-
+          
+          <!-- Simple Collapsible -->
           <div id="simple-collapsible" class="col s12">
             <collapsible-list [type]="collapsibleType">
               <collapsible-list-item *ngFor="let item of listItems">
                 <collapsible-header class="waves-effect">
+                  <i class="fa fa-chevron-down"
+                    [ngClass]="{
+                      'fa-chevron-down': item.expanded,
+                      'fa-chevron-right': !item.expanded
+                    }"
+                    aria-hidden="true"></i>
                   {{ item.desc }}
                 </collapsible-header>
-                <collapsible-body [expanded]="item.expanded">
+                <collapsible-body
+                  [expanded]="item.expanded"
+                  (toggleState)="item.expanded = $event">
                   <p style="text-align: left">{{ loremIpsum }}</p>
                 </collapsible-body>
               </collapsible-list-item>
             </collapsible-list>
           </div>
 
+          <!-- Table Collapsible -->
           <div id="table-collapsible" class="col s12">
 
             <collapsible-table class="z-depth-2"

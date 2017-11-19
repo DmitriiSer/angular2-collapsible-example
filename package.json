@@ -1,6 +1,6 @@
 {
   "name": "angular2-collapsible-example",
-  "version": "0.0.41",
+  "version": "0.0.44",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "angular2-collapsible": "0.0.41",
+    "angular2-collapsible": "0.0.44",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "materialize-css": "^0.98.1",
@@ -29,7 +29,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0",
+    "@angular/cli": "^1.5.2",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
@@ -45,6 +45,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~3.0.2",
     "tslint": "~5.1.0",
-    "typescript": "^2.2.2"
+    "typescript": "2.3.4"
   }
 }

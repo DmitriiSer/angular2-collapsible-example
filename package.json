@@ -1,6 +1,6 @@
 {
   "name": "angular2-collapsible-example",
-  "version": "0.0.44",
+  "version": "0.0.52",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
